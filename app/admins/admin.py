@@ -18,6 +18,8 @@ def login():
     password = requestdata.get("password")
     userinfo = db.query("select id,username,password,nickname from t_admins where username = '{}';".format(username))[0]
     if password == userinfo.pop("password"):
+        token = "2423t5ertgdygtdfhfghh"
+        userinfo.update(token=token)
         return responsedata(data=userinfo,status=200)
     else:
         return responsedata(msg="密码错误！")
