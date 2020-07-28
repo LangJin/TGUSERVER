@@ -23,3 +23,8 @@ def login():
         return responsedata(data=userinfo,status=200)
     else:
         return responsedata(msg="密码错误！")
+
+@adminbp.route("/getsystemmenulist",methods=["get"])
+def getsystemmenulist():
+    menulist = db.query("select menu_code,munu_name,munu_url from t_system_menu where is_true = 1")
+    return responsedata(data=menulist,status=200)
